@@ -18,4 +18,11 @@ npm start
 
 The page background will be green if the polyfill has worked and red if it has
 not. This should work in IE 11 and Edge which require new `RegExp.toString`
-implementation.
+implementation, but they instead create the output `/a/undefined` unless the
+`RegExp.flags` polyfill is included as well.
+
+For further debugging, can pass extra flags to the webpack build:
+
+```
+npm run prestart -- --no-min --no-concat --report --debug
+```

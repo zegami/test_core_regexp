@@ -1,9 +1,12 @@
 function re () {
-  const re = /a/.toString();
+  const pat = /a/.toString();
+  console.log('RegExp.toString():', pat);
   try {
     // Don't even care if this matches, it should just not throw
-    const re2 = new Function(re + '.test("a")');
+    const fn = new Function(`return ${pat}.test("a")`);
+    console.log('Should match:', fn());
   } catch (e) {
+    console.log(e);
     return false;
   }
   return true;
